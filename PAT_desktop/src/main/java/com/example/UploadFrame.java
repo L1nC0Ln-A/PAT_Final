@@ -130,7 +130,7 @@ public class UploadFrame extends JFrame {
 
                 JSONObject jsonResponse = new JSONObject(response.toString());
                 if (jsonResponse.getInt("status") == 200) {
-                    JOptionPane.showMessageDialog(this, "Document uploaded successfully.");
+                    JOptionPane.showMessageDialog(this, "Document saved successfully.");
                     dispose();
                 } else {
                     String error = jsonResponse.optString("error", "Unknown error");
