@@ -20,7 +20,7 @@ public class DocumentUploadFrame extends JFrame {
     public DocumentUploadFrame(String username) {
         this.username = username;
 
-        setTitle("Upload Document");
+        setTitle("New Document");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -31,7 +31,7 @@ public class DocumentUploadFrame extends JFrame {
         titleText = new JTextField(20);
         documentTextArea = new JTextArea(10, 20);
 
-        JButton uploadButton = new JButton("Upload");
+        JButton uploadButton = new JButton("Save");
         uploadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,7 +44,7 @@ public class DocumentUploadFrame extends JFrame {
                         uploadDocument(title, content);
                     } catch (Exception ex) {
                         ex.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "Error uploading document: " + ex.getMessage());
+                        JOptionPane.showMessageDialog(null, "Error saving document: " + ex.getMessage());
                     }
                 }
             }
@@ -117,10 +117,10 @@ public class DocumentUploadFrame extends JFrame {
             JSONObject jsonResponse = new JSONObject(response.toString());
             int status = jsonResponse.getInt("status");
             if (status == 200) {
-                JOptionPane.showMessageDialog(null, "Document uploaded successfully!");
+                JOptionPane.showMessageDialog(null, "Document saved successfully!");
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to upload document: " + jsonResponse.getString("error"));
+                JOptionPane.showMessageDialog(null, "Failed to save document: " + jsonResponse.getString("error"));
             }
         }
     }
