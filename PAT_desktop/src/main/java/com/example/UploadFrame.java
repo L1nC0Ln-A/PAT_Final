@@ -134,15 +134,15 @@ public class UploadFrame extends JFrame {
                     dispose();
                 } else {
                     String error = jsonResponse.optString("error", "Unknown error");
-                    JOptionPane.showMessageDialog(this, "Failed to upload document: " + error, "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Failed to save document: " + error, "Error", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Failed to upload document. Server returned HTTP error: " + responseCode, "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Failed to save document. Server returned HTTP error: " + responseCode, "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error uploading the document.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error save the document.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
