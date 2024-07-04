@@ -15,12 +15,12 @@ import org.json.JSONObject;
 
 public class AdminFrame extends JFrame {
 
-    private String username;
+    private int userId;
     private JTable usersTable;
     private DefaultTableModel model;
 
-    public AdminFrame(String username) {
-        this.username = username;
+    public AdminFrame(int userId) {
+        this.userId = userId;
 
         setTitle("Admin Panel");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -283,7 +283,7 @@ public class AdminFrame extends JFrame {
 
     private void handleLogout() {
         try {
-            String response = sendLogoutRequest(username);
+            String response = sendLogoutRequest(userId);
             JSONObject jsonResponse = new JSONObject(response);
             int status = jsonResponse.getInt("status");
             if (status == 200) {
@@ -299,13 +299,13 @@ public class AdminFrame extends JFrame {
         }
     }
 
-    private String sendLogoutRequest(String username) throws Exception {
+    private String sendLogoutRequest(int userId) throws Exception {
         URL url = new URL("http://localhost:8000/api/logout");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
 
-        String jsonInputString = new JSONObject().put("username", username).toString();
+        String jsonInputString = new JSONObject().put("userId", userId).toString();
 
         con.setDoOutput(true);
         try (OutputStream os = con.getOutputStream()) {
