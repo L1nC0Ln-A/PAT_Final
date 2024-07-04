@@ -63,7 +63,7 @@ public class DocumentDisplayFrame extends JFrame {
         buttonPanel.add(logoutButton, BorderLayout.LINE_END);
 
         // Upload button
-        JButton uploadButton = new JButton("Upload");
+        JButton uploadButton = new JButton("New");
         uploadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
